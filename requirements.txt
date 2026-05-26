@@ -1,0 +1,27 @@
+# Core MT5 connection
+MetaTrader5>=5.0.45
+
+# Data
+pandas>=2.0.0
+numpy>=1.26.0
+
+# Indicators
+pandas-ta>=0.3.14b
+
+# Backtesting (Phase 1)
+vectorbt>=0.26.1
+# backtrader>=1.9.78.123  # event-driven alternative — uncomment if needed
+
+# Config
+pyyaml>=6.0.1
+python-dotenv>=1.0.0
+
+# Alerts (Phase 2)
+python-telegram-bot>=21.0
+
+# Database (Phase 2+)
+psycopg2-binary>=2.9.9   # PostgreSQL
+# If starting with SQLite, no extra dep needed
+
+# Scheduling (Phase 2+)
+schedule>=1.2.1

@@ -1,0 +1,52 @@
+# Secrets — never commit
+.env
+.env.*
+!.env.example
+
+# AI / generated output
+generated/
+ai-output/
+CLAUDE.md
+.claude/
+.antigravity/
+
+# Data (can be large, always regenerate from MT5)
+data/
+*.csv
+*.parquet
+*.xlsx
+*.xls
+
+# Backtest artifacts
+backtest/results/
+backtest/plots/
+
+# Logs
+*.log
+logs/
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.egg-info/
+.venv/
+venv/
+env/
+dist/
+build/
+
+# Journal DB (local only)
+*.db
+*.sqlite
+*.sqlite3
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db

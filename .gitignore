@@ -3,12 +3,13 @@
 .env.*
 !.env.example
 
-# AI / generated output
+# AI / generated output — never commit
 generated/
 ai-output/
 CLAUDE.md
 .claude/
 .antigravity/
+tasks/
 
 # Data (can be large, always regenerate from MT5)
 data/

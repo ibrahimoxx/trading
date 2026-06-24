@@ -41,9 +41,14 @@ def export_symbol(name: str, cfg: dict) -> bool:
         print(f"         Check: is {name} visible in Market Watch? Right-click -> Show All.")
         return False
 
+    if not mt5.symbol_select(mt5_sym, True):
+        print(f"  [{name}] ERROR — could not select {mt5_sym} in Market Watch")
+        return False
+
     rates = mt5.copy_rates_from_pos(mt5_sym, MT5_TF, 0, BARS_REQUESTED)
     if rates is None or len(rates) == 0:
         print(f"  [{name}] ERROR — mt5.copy_rates_from_pos returned nothing")
+        print(f"         MT5 error: {mt5.last_error()}")
         return False
 
     df = pd.DataFrame(rates)

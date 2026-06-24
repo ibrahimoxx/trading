@@ -44,6 +44,7 @@ def export_symbol(name: str, cfg: dict) -> bool:
         print(f"  [{name}] ERROR — could not select {mt5_sym} in Market Watch")
         return False
 
+    print(f"  [{name}] using symbol={mt5_sym!r}  tf={MT5_TF_H1}  bars={BARS_REQUESTED}")
     rates = mt5.copy_rates_from_pos(mt5_sym, MT5_TF_H1, 0, BARS_REQUESTED)
     if rates is None or len(rates) == 0:
         print(f"  [{name}] ERROR — mt5.copy_rates_from_pos returned nothing")

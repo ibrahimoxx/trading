@@ -23,7 +23,7 @@ from config.symbols import SYMBOLS
 
 DATA_DIR = Path("data")
 BARS_REQUESTED = 100_000   # request max bars; MT5 returns what's available
-MT5_TF = None              # set after mt5.initialize() in main()
+MT5_TF_H1 = 16385          # mt5.TIMEFRAME_H1 — hardcoded to avoid pre-init evaluation
 
 
 def export_symbol(name: str, cfg: dict) -> bool:
@@ -44,7 +44,7 @@ def export_symbol(name: str, cfg: dict) -> bool:
         print(f"  [{name}] ERROR — could not select {mt5_sym} in Market Watch")
         return False
 
-    rates = mt5.copy_rates_from_pos(mt5_sym, MT5_TF, 0, BARS_REQUESTED)
+    rates = mt5.copy_rates_from_pos(mt5_sym, MT5_TF_H1, 0, BARS_REQUESTED)
     if rates is None or len(rates) == 0:
         print(f"  [{name}] ERROR — mt5.copy_rates_from_pos returned nothing")
         print(f"         MT5 error: {mt5.last_error()}")
@@ -72,9 +72,6 @@ def main():
         print("  Is MT5 terminal open and connected to Exness?")
         print("  Error:", mt5.last_error())
         sys.exit(1)
-
-    global MT5_TF
-    MT5_TF = mt5.TIMEFRAME_H1
 
     info = mt5.terminal_info()
     print(f"Connected: {info.name}  build={info.build}")

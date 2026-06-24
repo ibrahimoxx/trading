@@ -23,8 +23,7 @@ from config.symbols import SYMBOLS
 
 DATA_DIR = Path("data")
 BARS_REQUESTED = 100_000   # request max bars; MT5 returns what's available
-
-MT5_TF = mt5.TIMEFRAME_H1
+MT5_TF = None              # set after mt5.initialize() in main()
 
 
 def export_symbol(name: str, cfg: dict) -> bool:
@@ -73,6 +72,9 @@ def main():
         print("  Is MT5 terminal open and connected to Exness?")
         print("  Error:", mt5.last_error())
         sys.exit(1)
+
+    global MT5_TF
+    MT5_TF = mt5.TIMEFRAME_H1
 
     info = mt5.terminal_info()
     print(f"Connected: {info.name}  build={info.build}")
